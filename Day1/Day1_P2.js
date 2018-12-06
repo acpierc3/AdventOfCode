@@ -17,6 +17,6 @@ for(index=0; index < inputArray.length; index++) {
         pastFreqs.push(freq);
     }
     if(index === inputArray.length-1) {
-        index = 0;
+        index = -1;
     }
 }
