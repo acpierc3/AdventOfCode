@@ -1,7 +1,7 @@
-const fs = require('fs');
+const fs = require("fs");
 let input = "";
 
-input = fs.readFileSync("./Day1/input.txt", 'utf8');
+input = fs.readFileSync("./Day1/input.txt", "utf8");
 
 //PROBLEM 2
 let freq = 0;
