@@ -5,7 +5,7 @@ input = fs.readFileSync("./Day2/input.txt", "utf8");
 
 //PROBLEM 2
 let inputArray = input.split("\r\n");
-// let inputArray = ["abcde", "abbbb", "ewpor","ewpir"];
+// let inputArray = ["abcde", "abbbb", "ewpor","ewpir"]; TEST ARRAY
 
 let answerFound = false;
 
@@ -13,7 +13,7 @@ let answerFound = false;
 OuterLoop:
 for(x=0; x<inputArray.length-1; x++) {                  //increments first string to compare
     for(i=x+1; i<inputArray.length; i++) {              //increments second string to compare
-        // console.log(x, " vs ", i);
+
         let numDiffs = 0;
         let diffIndex = 0;
 
