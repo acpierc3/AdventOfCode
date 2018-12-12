@@ -112,6 +112,7 @@ for(let i = 0; i < sleepMap.length; i++) {
                 if (Math.max(...sleepFreq[j][1]) > highestFreq) {
                     mostFreqMin = sleepFreq[j][1].indexOf(Math.max(...sleepFreq[j][1]));
                     mostFreqGuard = sleepFreq[j][0];
+                    highestFreq = Math.max(...sleepFreq[j][1]);
                 }
 
                 break;
@@ -123,6 +124,13 @@ for(let i = 0; i < sleepMap.length; i++) {
             for (let m = 0; m < 60; m++) {
                 sleepFreq[sleepFreq.length-1][1][m] += sleepMap[i][2][m];
             }
+
+            if (Math.max(...sleepFreq[sleepFreq.length-1][1]) > highestFreq) {
+                mostFreqMin = sleepFreq[sleepFreq.length-1][1].indexOf(Math.max(...sleepFreq[sleepFreq.length-1][1]));
+                mostFreqGuard = sleepFreq[sleepFreq.length-1][0];
+                highestFreq = Math.max(...sleepFreq[sleepFreq.length-1][1]);
+            }
+
         } else {match = false}
 
     }
@@ -130,23 +138,10 @@ for(let i = 0; i < sleepMap.length; i++) {
 
 
 
-console.log(sleepFreq);
-console.log(sleepFreq.length);
-
-
-const sleepiestGuardNum = guardSleepTime.indexOf(Math.max(...guardSleepTime));
-let sleepiestGuardArr = new Array(60).fill(0);
-
-for(let i = 0; i < sleepMap.length; i++) {
-    if (parseInt(sleepMap[i][1]) === sleepiestGuardNum) {
-        // console.log("TRUE");
-        for (let j = 0; j < 60; j++) {
-            sleepiestGuardArr[j] += sleepMap[i][2][j];
-        }
-    }
-}
-
-const sleepiestMinute = sleepiestGuardArr.indexOf(Math.max(...sleepiestGuardArr));
-
+// console.log(sleepFreq);
+// console.log(sleepFreq.length);
+console.log("Highest frequency slept minute:",highestFreq);
+console.log("Guard No:",mostFreqGuard, "during minute:",mostFreqMin);
+console.log("Answer:", mostFreqGuard*mostFreqMin);
 
 
