@@ -121,6 +121,5 @@ console.log("Longest total sleeping time: ", Math.max(...guardSleepTime));
 console.log("Guard who slept the most: ", sleepiestGuardNum);
 console.log("sleepiest Minute: ", sleepiestMinute);
 
-const answer = Math.max(...guardSleepTime) * guardSleepTime.indexOf(Math.max(...guardSleepTime))
+const answer = sleepiestMinute * sleepiestGuardNum;
 console.log("answer: ", answer);
-console.log(sleepiestGuardArr);
