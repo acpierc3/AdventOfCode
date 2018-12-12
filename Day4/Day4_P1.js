@@ -42,7 +42,7 @@ for (let i = 0; i < inputArray.length; i++) {
 let guardSleepTime = new Array(4000).fill(0);
 
 
-//initialize variables for calculation
+//initialize variables for sleepMap calculation
 let sleepStart = 0;
 let sleepEnd = 0;
 let sleepMapIndex = 0;
@@ -97,6 +97,20 @@ for (let i = 0; i < sleepMap.length; i++) {
     totSleepArray.push([sleepMap[i][0], sleepMap[i][1], totSleepTime]);
 }
 
+const sleepiestGuardNum = guardSleepTime.indexOf(Math.max(...guardSleepTime));
+
+let sleepiestGuardArr = new Array(60).fill(0);
+
+for(let i = 0; i < sleepMap.length; i++) {
+    if (parseInt(sleepMap[i][1]) === sleepiestGuardNum) {
+        console.log("TRUE");
+        for (let j = 0; j < 60; j++) {
+            sleepiestGuardArr[j] += sleepMap[i][2][j];
+        }
+    }
+}
+
+const sleepiestMinute = sleepiestGuardArr.indexOf(Math.max(...sleepiestGuardArr));
 
 
 
@@ -104,7 +118,9 @@ for (let i = 0; i < sleepMap.length; i++) {
 // console.log(sleepMapIndex)
 // console.log(totSleepArray);
 console.log("Longest total sleeping time: ", Math.max(...guardSleepTime));   
-console.log("Guard who slept the most: ", guardSleepTime.indexOf(Math.max(...guardSleepTime)));
+console.log("Guard who slept the most: ", sleepiestGuardNum);
+console.log("sleepiest Minute: ", sleepiestMinute);
 
 const answer = Math.max(...guardSleepTime) * guardSleepTime.indexOf(Math.max(...guardSleepTime))
 console.log("answer: ", answer);
+console.log(sleepiestGuardArr);
