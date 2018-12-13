@@ -6,7 +6,8 @@ input = fs.readFileSync("./Day5/input.txt", "utf8");
 //PROBLEM 2
 test = "dabAcCaCBAcCcaDA";
 
-function reactPolymer (polymer) {
+function reactPolymer (polymer) {           //"reacts" polymer string and returns the length afterwards
+   
     for (let i = 0; i < polymer.length; i++) {
         if (polymer.charAt(i) != polymer.charAt(i+1) && polymer.charAt(i).toUpperCase() === polymer.charAt(i+1).toUpperCase()) {
             // console.log(i);
@@ -28,6 +29,6 @@ for (let i = 0; i < alphabet.length; i++) {
     polymerLengths.push(reactPolymer(polymer));
 }
 
+const answer = Math.max(...polymerLengths);
 
-
-console.log(polymerLengths);
+console.log(answer);
