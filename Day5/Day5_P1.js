@@ -4,18 +4,22 @@ let input = "";
 input = fs.readFileSync("./Day5/input.txt", "utf8");
 
 //PROBLEM 1
-input = "dabAcCaCBAcCcaDA";
+test = "dabAcCaCBAcCcaDA";
 
-let i = 0;
+let answer = test;
 
-while (i < input.length) {
-    if (input.charAt(i) != input.charAt(i+1) && input.charAt(i).toUpperCase() === input.charAt(i+1).toUpperCase()) {
+
+
+for (let i = 0; i < answer.length; i++) {
+    if (answer.charAt(i) != answer.charAt(i+1) && answer.charAt(i).toUpperCase() === answer.charAt(i+1).toUpperCase()) {
         console.log(i);
+        answer = answer.slice(0,i) + answer.slice(i+2,answer.length);
+        console.log(answer);
+        i = i - 2;
     }
-    i++;
 }
 
 
 
 
-console.log(input);
+// console.log(input);
