@@ -36,3 +36,5 @@ Removing all D/d units produces abAcCaCBAcCcaA. Fully reacting this polymer prod
 In this example, removing all C/c units was best, producing the answer 4.
 
 What is the length of the shortest polymer you can produce by removing all units of exactly one type and fully reacting the result?
+
+//ANSWER: 
