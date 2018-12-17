@@ -1,7 +1,7 @@
 const fs = require("fs");
 let input = "";
 
-input = fs.readFileSync("./Day5/input.txt", "utf8");
+input = fs.readFileSync("./Day6/input.txt", "utf8");
 
 //PROBLEM 1
 test = "dabAcCaCBAcCcaDA";
