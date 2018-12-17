@@ -24,30 +24,43 @@ for (let i = 0; i < 10; i++) {
 
 let closestCoord = 0;
 let closestCoordDistance = 0;
+let closestCoordCount = 0;
 let distanceToCoord = -1;
+
 
 
 for (let y = 0; y < coordinateMap.length; y++) {
     for (let x = 0; x < coordinateMap[y].length; x++) {
 
         closestCoord = 0;
-        closestCoordDistance = 100;
+        closestCoordDistance = 10000;
+        closestCoordCount = 0;
 
         for (let i = 0; i < inputArray.length; i++) {         //loop through input to find closest point
            
-            distanceToCoord = Math.abs((y-inputArray[i][0]) + (x-inputArray[i][1]));
+            distanceToCoord = Math.abs((x-inputArray[i][0])) + Math.abs((y-inputArray[i][1]));
             console.log(distanceToCoord);
             
             if (distanceToCoord === 0) {
                 closestCoord = i+1;
+                closestCoordDistance = 0;
+                closestCoordCount = 1;
                 break;
             } else if (distanceToCoord < closestCoordDistance) {
                 closestCoord = i+1;
                 closestCoordDistance = distanceToCoord;
+                closestCoordCount = 1;
+            } else if (distanceToCoord === closestCoordDistance) {
+                closestCoordCount++;
             }
         }
 
-        coordinateMap[y][x] = closestCoord;
+        if (closestCoordCount > 1) {
+            coordinateMap[y][x] = ".";
+        } else {
+            coordinateMap[y][x] = closestCoord;
+        }
+        
     }
 }
 
