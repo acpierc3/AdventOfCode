@@ -7,8 +7,8 @@ let test = "";
 input = fs.readFileSync("./Day6/input.txt", "utf8");
 test = fs.readFileSync("./Day6/test.txt", "utf8");
 
-let inputArray = test.split("\r\n");
-// let inputArray = input.split("\r\n");
+// let inputArray = test.split("\r\n");
+let inputArray = input.split("\r\n");
 
 inputArray = inputArray
                     .map((record) => record.replace(' ',''))
@@ -17,10 +17,13 @@ inputArray = inputArray
 //PROBLEM 1
 
 //initialize a 2D array to map out coordinates from input
-const coordinateMap = new Array(10);
-for (let i = 0; i < 10; i++) {
-    coordinateMap[i] = new Array(10).fill(0);
+const coordinateMap = new Array(400);
+for (let i = 0; i < 400; i++) {
+    coordinateMap[i] = new Array(400).fill(0);
 }
+
+const areaAroundCoord = new Array(50).fill(0);
+
 
 let closestCoord = 0;
 let closestCoordDistance = 0;
@@ -39,7 +42,7 @@ for (let y = 0; y < coordinateMap.length; y++) {
         for (let i = 0; i < inputArray.length; i++) {         //loop through input to find closest point
            
             distanceToCoord = Math.abs((x-inputArray[i][0])) + Math.abs((y-inputArray[i][1]));
-            console.log(distanceToCoord);
+            // console.log(distanceToCoord);
             
             if (distanceToCoord === 0) {
                 closestCoord = i+1;
@@ -59,8 +62,28 @@ for (let y = 0; y < coordinateMap.length; y++) {
             coordinateMap[y][x] = ".";
         } else {
             coordinateMap[y][x] = closestCoord;
+            areaAroundCoord[closestCoord-1]++;
         }
         
+    }
+}
+
+for (let y = 0; y < coordinateMap.length; y++) {
+
+    if (y === 0 || y === coordinateMap.length - 1) {
+        for (let x = 0; x < coordinateMap[y].length; x++) {
+            if(coordinateMap[y][x]-1 != '.') {
+                areaAroundCoord[coordinateMap[y][x]-1] = 0;
+            }
+            
+        }
+    }
+
+    if (coordinateMap[y][0]-1 != '.') {
+        areaAroundCoord[coordinateMap[y][0]-1] = 0;
+    }
+    if (coordinateMap[y][coordinateMap[y].length-1] != '.') {
+        areaAroundCoord[coordinateMap[y][coordinateMap[y].length-1] - 1] = 0;
     }
 }
 
@@ -70,5 +93,7 @@ for (let y = 0; y < coordinateMap.length; y++) {
 
 
 
-console.log(coordinateMap);
 
+console.log(coordinateMap);
+console.log(areaAroundCoord);
+console.log("answer:", Math.max(...areaAroundCoord));
