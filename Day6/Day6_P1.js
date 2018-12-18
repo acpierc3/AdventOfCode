@@ -68,9 +68,11 @@ for (let y = 0; y < coordinateMap.length; y++) {
     }
 }
 
+
+//This loop goes around the edges of the coordinate map to remove any areas of coordinates that are infinite
 for (let y = 0; y < coordinateMap.length; y++) {
 
-    if (y === 0 || y === coordinateMap.length - 1) {
+    if (y === 0 || y === coordinateMap.length - 1) {            //top and bottom boundaries of coordinate map
         for (let x = 0; x < coordinateMap[y].length; x++) {
             if(coordinateMap[y][x]-1 != '.') {
                 areaAroundCoord[coordinateMap[y][x]-1] = 0;
@@ -79,7 +81,7 @@ for (let y = 0; y < coordinateMap.length; y++) {
         }
     }
 
-    if (coordinateMap[y][0]-1 != '.') {
+    if (coordinateMap[y][0]-1 != '.') {                     //left and right boundaries of coordinate map
         areaAroundCoord[coordinateMap[y][0]-1] = 0;
     }
     if (coordinateMap[y][coordinateMap[y].length-1] != '.') {
@@ -94,6 +96,6 @@ for (let y = 0; y < coordinateMap.length; y++) {
 
 
 
-console.log(coordinateMap);
-console.log(areaAroundCoord);
-console.log("answer:", Math.max(...areaAroundCoord));
+// console.log(coordinateMap);
+// console.log(areaAroundCoord);
+console.log("Answer:", Math.max(...areaAroundCoord));
