@@ -20,33 +20,48 @@ inputArray = inputArray
 
 //array of remaining letters
 // let remainingLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-let remainingLetters = 'ABCDE'.split('');
+let remainingLetters = 'ABCDEF'.split('');
 let bufferArray = [];
 let finalString = "";
 let letterReady = true;
 
-for(let i = 0; i < remainingLetters.length; i++) {      //one level of restricitions
-    for(let j = 0; j < inputArray; j++) {
+while(remainingLetters.length > 1) {
 
-        if (inputArray[j][1] === remainingLetters.charAt(i)) {
-            //there are restrictions
+    for(let i = 0; i < remainingLetters.length; i++) {      //loop through each remaining letter
+        letterReady = true;
+
+        for(let j = 0; j < inputArray.length; j++) {               //check each letter for met requirements
+
+            if (inputArray[j][1] === remainingLetters[i]) {         //if there is a requirement
+                if(!finalString.includes(inputArray[j][0])) {       //if requirement is NOT met
+                    letterReady = false;
+                    break;
+                }
+            }
+        }
+
+        if(letterReady) {
+            bufferArray.push(remainingLetters[i]);
+            console.log("adding:", remainingLetters[i]);
         }
     }
 
-    if(letterReady) {
-        //move to bufferarray
-    }
+    bufferArray.sort();
+    bufferArray.forEach((val) => {
+        finalString = finalString + val;
+        remainingLetters = remainingLetters.filter(letter => letter != val);
+        console.log(remainingLetters);
+    });
+    bufferArray = [];
+
+    // console.log(remainingLetters.length);
+
 }
 
-//sort buffer array
-//add buffer array to final string
-//remove buffer array letters from remaining letters
-//clear buffer array
 
 
 
 
-
-
-
-console.log(inputArray);
+console.log(bufferArray);
+console.log(finalString);
+console.log(remainingLetters);
