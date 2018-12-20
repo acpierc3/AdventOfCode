@@ -7,8 +7,8 @@ let test = "";
 input = fs.readFileSync("./Day7/input.txt", "utf8");
 test = fs.readFileSync("./Day7/test.txt", "utf8");
 
-let inputArray = test.split("\r\n");
-// let inputArray = input.split("\r\n");
+// let inputArray = test.split("\r\n");
+let inputArray = input.split("\r\n");
 
 inputArray = inputArray
                     .map((record) => record.match(/\b[A-Z]\b/g))
@@ -19,40 +19,44 @@ inputArray = inputArray
 
 
 //array of remaining letters
-// let remainingLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-let remainingLetters = 'ABCDEF'.split('');
+let remainingLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+// let remainingLetters = 'ABCDEF'.split('');
 let bufferArray = [];
 let finalString = "";
 let letterReady = true;
 
-while(remainingLetters.length > 1) {
+while(remainingLetters.length > 0) {
 
     for(let i = 0; i < remainingLetters.length; i++) {      //loop through each remaining letter
         letterReady = true;
 
-        for(let j = 0; j < inputArray.length; j++) {               //check each letter for met requirements
+        if(!bufferArray.includes(remainingLetters[i])) {
 
-            if (inputArray[j][1] === remainingLetters[i]) {         //if there is a requirement
-                if(!finalString.includes(inputArray[j][0])) {       //if requirement is NOT met
-                    letterReady = false;
-                    break;
+            for(let j = 0; j < inputArray.length; j++) {               //check each letter for met requirements
+
+                if (inputArray[j][1] === remainingLetters[i]) {         //if there is a requirement
+                    if(!finalString.includes(inputArray[j][0])) {       //if requirement is NOT met
+                        letterReady = false;
+                        break;
+                    }
                 }
             }
-        }
+        
 
-        if(letterReady) {
-            bufferArray.push(remainingLetters[i]);
-            console.log("adding:", remainingLetters[i]);
+            if(letterReady) {
+                bufferArray.push(remainingLetters[i]);
+                // console.log("adding:", remainingLetters[i]);
+            }
         }
     }
 
+    // console.log(bufferArray);
     bufferArray.sort();
-    bufferArray.forEach((val) => {
-        finalString = finalString + val;
-        remainingLetters = remainingLetters.filter(letter => letter != val);
-        console.log(remainingLetters);
-    });
-    bufferArray = [];
+    finalString = finalString + bufferArray[0];
+    remainingLetters = remainingLetters.filter(letter => letter != bufferArray[0]);
+    // console.log(remainingLetters);
+    bufferArray.shift();
+    // console.log(bufferArray);
 
     // console.log(remainingLetters.length);
 
