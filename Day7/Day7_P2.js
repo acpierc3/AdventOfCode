@@ -7,8 +7,8 @@ let test = "";
 input = fs.readFileSync("./Day7/input.txt", "utf8");
 test = fs.readFileSync("./Day7/test.txt", "utf8");
 
-// let inputArray = test.split("\r\n");
-let inputArray = input.split("\r\n");
+let inputArray = test.split("\r\n");
+// let inputArray = input.split("\r\n");
 
 inputArray = inputArray
                     .map((record) => record.match(/\b[A-Z]\b/g))
@@ -19,8 +19,12 @@ inputArray = inputArray
 
 
 //array of remaining letters
-let remainingLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-// let remainingLetters = 'ABCDEF'.split('');
+let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+let remainingLetters = alphabet;
+let remainingLetters = 'ABCDEF'.split('');
+const workers = 2;
+let time = 0;
+
 let bufferArray = [];
 let finalString = "";
 let letterReady = true;
@@ -60,12 +64,14 @@ while(remainingLetters.length > 0) {
 
     // console.log(remainingLetters.length);
 
+
+    time++;
 }
 
 
 
 
 
-console.log(bufferArray);
+
 console.log(finalString);
-console.log(remainingLetters);
+console.log("time:",time);
