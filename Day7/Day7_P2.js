@@ -15,19 +15,17 @@ inputArray = inputArray
 
 //PROBLEM 2
 
-
-
-
 //array of remaining letters
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-let remainingLetters = alphabet;
+// let remainingLetters = alphabet;
 let remainingLetters = 'ABCDEF'.split('');
 const workers = 2;
-let time = 0;
 
+let time = 0;
 let bufferArray = [];
 let finalString = "";
 let letterReady = true;
+let workerArray = [];
 
 while(remainingLetters.length > 0) {
 
