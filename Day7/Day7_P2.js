@@ -47,20 +47,18 @@ while(remainingLetters.length > 0) {
 
             if(letterReady) {
                 bufferArray.push(remainingLetters[i]);
-                // console.log("adding:", remainingLetters[i]);
+
             }
         }
     }
 
-    // console.log(bufferArray);
+
     bufferArray.sort();
     finalString = finalString + bufferArray[0];
     remainingLetters = remainingLetters.filter(letter => letter != bufferArray[0]);
-    // console.log(remainingLetters);
-    bufferArray.shift();
-    // console.log(bufferArray);
 
-    // console.log(remainingLetters.length);
+    bufferArray.shift();
+
 
 
     time++;
