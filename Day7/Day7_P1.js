@@ -15,9 +15,6 @@ inputArray = inputArray
 
 //PROBLEM 1
 
-
-
-
 //array of remaining letters
 let remainingLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 // let remainingLetters = 'ABCDEF'.split('');
@@ -54,7 +51,6 @@ while(remainingLetters.length > 0) {
     bufferArray.sort();
     finalString = finalString + bufferArray[0];
     remainingLetters = remainingLetters.filter(letter => letter != bufferArray[0]);
-    // console.log(remainingLetters);
     bufferArray.shift();
     // console.log(bufferArray);
 
@@ -66,6 +62,6 @@ while(remainingLetters.length > 0) {
 
 
 
-console.log(bufferArray);
+// console.log(bufferArray);
 console.log(finalString);
-console.log(remainingLetters);
+// console.log(remainingLetters);

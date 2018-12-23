@@ -26,6 +26,11 @@ let bufferArray = [];
 let finalString = "";
 let letterReady = true;
 let workerArray = [];
+const numWorkers = 2;
+
+for (let i = 0; i < numWorkers; i++) {      //initialize worker array
+    workerArray[i] = new Array(2).fill(0);
+}
 
 while(remainingLetters.length > 0) {
 
