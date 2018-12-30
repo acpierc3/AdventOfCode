@@ -12,7 +12,7 @@ let inputArray = input.split(" ").map(x => +x);
 
 
 
-//PROBLEM 1
+//PROBLEM 2
 
 function nodeParse() {        //recursive function iterates through input array to return meta data
 
