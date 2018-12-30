@@ -7,8 +7,8 @@ let test = "";
 input = fs.readFileSync("./Day8/input.txt", "utf8");
 test = fs.readFileSync("./Day8/test.txt", "utf8");
 
-let inputArray = test.split(" ").map(x => +x);      //.map(x => +x) converts strings to numbers
-// let inputArray = input.split(" ").map(x => +x);
+// let inputArray = test.split(" ").map(x => +x);      //.map(x => +x) converts strings to numbers
+let inputArray = input.split(" ").map(x => +x);
 
 
 
@@ -54,11 +54,9 @@ function nodeParse() {        //recursive function iterates through input array 
             answer += inputArray.shift();
         }
 
-        console.log(inputArray);
+        // console.log(inputArray);
         return answer;
     }
-
-
 }
 
 
