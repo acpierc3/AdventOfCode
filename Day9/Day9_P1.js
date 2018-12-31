@@ -3,13 +3,13 @@
 //PROBLEM 1
 
 
-const numElfs = 13;      //modify these two params based on puzzle input
-const lastMarble = 7999;
+const numElfs = 10;      //modify these two params based on puzzle input
+const lastMarble = 1618;
 
 const marbles = [0,1];
 let currentMarblePos = 1;
 let newMarblePos = 0;
-let currentPlayer = 2;
+let currentPlayer = 1;
 let elfWinner = 0;
 
 const elfScores = new Array(numElfs).fill(0);
@@ -55,4 +55,4 @@ let highestPoints = Math.max(...elfScores);
 
 // console.log(marbles);
 // console.log(elfScores);
-console.log("winner:",highestPoints);
+console.log("winner:",highestPoints,"elf#:",elfScores.indexOf(highestPoints)+1);
