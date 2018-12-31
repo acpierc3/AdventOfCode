@@ -1,40 +1,28 @@
 "use strict";
 
-const fs = require("fs");
-let input = "";
-let test = "";
-
-input = fs.readFileSync("./Day8/input.txt", "utf8");
-test = fs.readFileSync("./Day8/test.txt", "utf8");
-
-// let inputArray = test.split(" ").map(x => +x);      //.map(x => +x) converts strings to numbers
-let inputArray = input.split(" ").map(x => +x);
-
-
-
 //PROBLEM 1
 
-function nodeParse() {        //recursive function iterates through input array to return meta data
 
-    const count = inputArray.shift();
-    const meta = inputArray.shift();
+const numPlayers = 9;      //modify these two params based on puzzle input
+const lastMarble = 16;
 
-    let answer = 0;
+const marbles = [0,1];
+let currentMarblePos = 1;
 
-    for (let x = 0; x < count; x++) {   //iterate through number of child nodes
-        answer += nodeParse();
-    }
+
+
+for(let x = 2; x <= lastMarble; x++) {
+    
+    if (x%23 === 0) {
         
-    for (let x = 0; x < meta; x ++) {   //iterate through number of meta data
-        answer += inputArray.shift();
-    }
 
-    // console.log(inputArray);
-    return answer;
+    } else if (currentMarblePos+1 === marbles.length) {
+        marbles.splice(1,0,x);
+        currentMarblePos = 1;
+    } else {
+        marbles.splice(currentMarblePos+2,0,x);
+        currentMarblePos += 2;
+    }
 }
 
-
-console.log(nodeParse());
-
-
-
+console.log(marbles)
