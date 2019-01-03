@@ -41,6 +41,8 @@ const maxVal = Math.max(...highestArr);
 const yCoor = highestArr.indexOf(maxVal);
 const xCoor = sums[yCoor].indexOf(maxVal);
 
+
+
 console.log("max val:",maxVal);
 console.log(yCoor);
 console.log(xCoor);
