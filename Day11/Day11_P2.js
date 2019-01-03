@@ -37,7 +37,13 @@ for(let squareSize = 3; squareSize < 4; squareSize++) {
 
     for(let y = 1; y < grid.length-squareSize; y++) {              //find highest power 3x3
         for(let x = 1; x < grid[y].length-squareSize; x++) {
-            sums[y][x] = grid[y][x] + grid[y+1][x] + grid[y+2][x] + grid[y][x+1] + grid[y+1][x+1] + grid[y+2][x+1] + grid[y][x+2] + grid[y+1][x+2] + grid[y+2][x+2];
+
+            for(let yi = 0; yi < squareSize; yi++) {
+                for(let xi = 0; xi < squareSize; xi++) {
+                    sums[y][x] += grid[y+yi][x+xi];
+                }
+            }
+            // sums[y][x] = grid[y][x] + grid[y+1][x] + grid[y+2][x] + grid[y][x+1] + grid[y+1][x+1] + grid[y+2][x+1] + grid[y][x+2] + grid[y+1][x+2] + grid[y+2][x+2];
         }
     }
 
