@@ -41,12 +41,16 @@ for (let y = 1; y < highestArr.length; y++) {
     highestArr[y] = Math.max.apply(null, sums[y]);
 }
 
-const yCoor = highestArr.indexOf(Math.max(...highestArr));
+const maxVal = Math.max(...highestArr);
+
+const yCoor = highestArr.indexOf(maxVal);
+const xCoor = sums[yCoor].indexOf(maxVal);
 
 // console.log(grid[3][5]);
 // console.log(grid[101][153]);
 
-console.log("highest:",Math.max(...highestArr));
+console.log("highest:",maxVal);
 console.log(yCoor);
+console.log(xCoor);
 
 // console.log(highestArr);
