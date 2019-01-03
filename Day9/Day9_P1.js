@@ -17,16 +17,8 @@ const elfScores = new Array(numElfs).fill(0);
 
 for(let x = 2; x <= lastMarble; x++) {
     
-    if (currentPlayer === numElfs) {
-        currentPlayer = 1;
-    } else {
-        currentPlayer++;
-    }
-
-
     if (x%23 === 0) {
-        // elfWinner = x%numElfs;
-        elfWinner = currentPlayer;
+        elfWinner = x%numElfs;
 
         if (currentMarblePos < 7) {
             newMarblePos = marbles.length - (7 - currentMarblePos);
@@ -37,24 +29,18 @@ for(let x = 2; x <= lastMarble; x++) {
 
         currentMarblePos = newMarblePos;
         elfScores[elfWinner-1] += (x + marbles[newMarblePos]);
-        // console.log("pos: ",newMarblePos, "curr marb: ", x, "removed marb: ", marbles[newMarblePos],"winner:",elfWinner);
         marbles.splice(newMarblePos, 1);
 
     } else if (currentMarblePos+1 === marbles.length) {
         marbles.splice(1,0,x);
         currentMarblePos = 1;
-        // console.log("added:",x," at pos:",currentMarblePos);
     } else {
         marbles.splice(currentMarblePos+2,0,x);
         currentMarblePos += 2;
-        // console.log("added:",x," at pos:",currentMarblePos);
     }
 }
 
-
 let highestPoints = Math.max(...elfScores);
 
-// console.log(marbles);
-// console.log(elfScores);
 console.log("winner:",highestPoints,"elf#:",elfScores.indexOf(highestPoints)+1);
-console.log("current marble:",currentMarblePos);
+// console.log("current marble:",currentMarblePos);
