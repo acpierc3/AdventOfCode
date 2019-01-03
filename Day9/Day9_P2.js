@@ -1,6 +1,7 @@
 "use strict";
 
 //PROBLEM 2, just multiply input by 100
+//extremely slow, need to re-write to use linked list instead of array
 
 
 const numElfs = 459;      //modify these two params based on puzzle input
