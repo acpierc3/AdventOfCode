@@ -1,10 +1,6 @@
 "use strict";
 
-let input = 7989;   //serial number given in problem statement
-let test = 18;       //test serial number
-
-let serialNum = test;
-// let serialNum = input;
+let serialNum = 7989;   //serial number given in problem statement
 
 //PROBLEM 1
 
@@ -37,20 +33,14 @@ for(let y = 1; y < grid.length-3; y++) {              //find highest power 3x3
 
 const highestArr = new Array(297).fill(0);
 
-for (let y = 1; y < highestArr.length; y++) {
+for (let y = 1; y < highestArr.length; y++) {           //reduce sums array into one dimensional array to find max val
     highestArr[y] = Math.max.apply(null, sums[y]);
 }
 
 const maxVal = Math.max(...highestArr);
-
 const yCoor = highestArr.indexOf(maxVal);
 const xCoor = sums[yCoor].indexOf(maxVal);
 
-// console.log(grid[3][5]);
-// console.log(grid[101][153]);
-
-console.log("highest:",maxVal);
+console.log("max val:",maxVal);
 console.log(yCoor);
 console.log(xCoor);
-
-// console.log(highestArr);
