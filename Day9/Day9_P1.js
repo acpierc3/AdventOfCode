@@ -11,7 +11,7 @@ let currentMarblePos = 1;
 let newMarblePos = 0;
 let currentPlayer = 1;
 let elfWinner = 0;
-
+// 
 const elfScores = new Array(numElfs).fill(0);
 
 
