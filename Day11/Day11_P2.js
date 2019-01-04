@@ -28,7 +28,7 @@ let yCoor = 0;
 let xCoor = 0;
 let optimumSquareSize = 0;
 
-for(let squareSize = 3; squareSize < 300; squareSize++) {
+for(let squareSize = 3; squareSize < 300; squareSize++) {       //loop through each possble square size
 
     const sums = new Array(301).fill(0);
 
@@ -36,7 +36,7 @@ for(let squareSize = 3; squareSize < 300; squareSize++) {
         sums[x] = new Array(301).fill(0);
     }
 
-    for(let y = 1; y < grid.length-squareSize; y++) {              //find highest power 3x3
+    for(let y = 1; y < grid.length-squareSize; y++) {              //find highest power square of given size
         for(let x = 1; x < grid[y].length-squareSize; x++) {
 
             for(let yi = 0; yi < squareSize; yi++) {
