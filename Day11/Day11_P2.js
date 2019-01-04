@@ -1,6 +1,6 @@
 "use strict";
 
-let serialNum = 18;   //serial number given in problem statement
+let serialNum = 7989;   //serial number given in problem statement
 
 //PROBLEM 2
 
@@ -26,8 +26,9 @@ for(let y = 1; y < grid.length; y++) {              //build grid power numbers
 let maxVal = 0;
 let yCoor = 0;
 let xCoor = 0;
+let optimumSquareSize = 0;
 
-for(let squareSize = 3; squareSize < 4; squareSize++) {
+for(let squareSize = 3; squareSize < 300; squareSize++) {
 
     const sums = new Array(301).fill(0);
 
@@ -43,7 +44,6 @@ for(let squareSize = 3; squareSize < 4; squareSize++) {
                     sums[y][x] += grid[y+yi][x+xi];
                 }
             }
-            // sums[y][x] = grid[y][x] + grid[y+1][x] + grid[y+2][x] + grid[y][x+1] + grid[y+1][x+1] + grid[y+2][x+1] + grid[y][x+2] + grid[y+1][x+2] + grid[y+2][x+2];
         }
     }
 
@@ -58,6 +58,7 @@ for(let squareSize = 3; squareSize < 4; squareSize++) {
         maxVal = Math.max(...highestArr);
         yCoor = highestArr.indexOf(maxVal);
         xCoor = sums[yCoor].indexOf(maxVal);
+        optimumSquareSize = squareSize;
     }
 }
 
@@ -66,3 +67,5 @@ for(let squareSize = 3; squareSize < 4; squareSize++) {
 console.log("max val:",maxVal);
 console.log(yCoor);
 console.log(xCoor);
+console.log(optimumSquareSize);
+
