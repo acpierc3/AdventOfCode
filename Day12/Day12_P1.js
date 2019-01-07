@@ -45,7 +45,16 @@ for (let i = 1; i <= numGenerations; i++) {
     for(let j = 2; j < currentState.length-1; j++) {
         console.log(currentState.substring(j-2,j+3));
 
-        
+        for(let k = 0; k < inputArray.length; k++) {
+            if (currentState.substring(j-2,j+3) === inputArray[k][0]) {
+                currentState = currentState.substring(0,j) + inputArray[k][1] + currentState.substring(j+1);
+            } else {
+                currentState = currentState.substring(0,j) + "." + currentState.substring(j+1);
+            }
+
+        }
+        // console.log(currentState.substring(j-2,j+3));
+
     }
 }
 
@@ -53,4 +62,4 @@ for (let i = 1; i <= numGenerations; i++) {
 
 // console.log(initialState);
 // console.log(inputArray);
-// console.log(currentState);
+console.log(currentState);
