@@ -21,49 +21,62 @@ for (let i = 0; i < inputArray.length; i++) {
 
 //PROBLEM 1
 
-const numGenerations = 2   //puzzle input
+const numGenerations = 20   //puzzle input
 
 let currentState = initialState;
+let nextState = currentState;
 let plantZero = 0;
 let match = false;
 
 for (let i = 1; i <= numGenerations; i++) {
 
+    console.log("gen:",i);
+
     if (currentState.charAt(0) === "#") {
+        currentState = "..." + currentState;
+        plantZero += 3;
+    } else if (currentState.charAt(1) === "#") {
         currentState = ".." + currentState;
         plantZero += 2;
-    } else if (currentState.charAt(1) === "#") {
+    } else if (currentState.charAt(2) === "#") {
         currentState = "." + currentState;
         plantZero += 1;
     }
 
     if (currentState.charAt(currentState.length-1) === "#") {
-        currentState = currentState + "..";
+        currentState = currentState + "...";
     } else if (currentState.charAt(currentState.length-2) === "#") {
+        currentState = currentState + "..";
+    } else if (currentState.charAt(currentState.length-3) === "#") {
         currentState = currentState + ".";
     }
 
+    nextState = currentState;
+
     for(let j = 2; j < currentState.length-1; j++) {
-        // console.log(currentState.substring(j-2,j+3));
+
+        match = false;
 
         for(let k = 0; k < inputArray.length; k++) {
             if (currentState.substring(j-2,j+3) === inputArray[k][0]) {
-                currentState = currentState.substring(0,j) + inputArray[k][1] + currentState.substring(j+1);
+                nextState = nextState.substring(0,j) + inputArray[k][1] + nextState.substring(j+1);
                 match = true;
-                // console.log(currentState);
+                // console.log(nextState, ":match:",j);
             }
         }
 
         if (!match) {
-            currentState = currentState.substring(0,j) + "." + currentState.substring(j+1);
+            nextState = nextState.substring(0,j) + "." + nextState.substring(j+1);
+            // console.log(nextState, ":no match:",j);
         }
-        // console.log(currentState.substring(j-2,j+3));
 
     }
+
+    currentState = nextState;
 }
 
 
 
 // console.log(initialState);
-console.log(inputArray);
+// console.log(inputArray);
 console.log(currentState);
