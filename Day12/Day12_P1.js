@@ -8,7 +8,7 @@ let test = "";
 input = fs.readFileSync("./Day12/input.txt", "utf8");
 test = fs.readFileSync("./Day12/test.txt", "utf8");
 
-let inputArray = test.split("\r\n");
+let inputArray = input.split("\r\n");
 // 
 let initialState = inputArray[0].replace("initial state: ","").trim();
 inputArray.shift();
