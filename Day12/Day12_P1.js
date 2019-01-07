@@ -43,7 +43,9 @@ for (let i = 1; i <= numGenerations; i++) {
     }
 
     for(let j = 2; j < currentState.length-1; j++) {
-        console.log(currentState.charAt(j));
+        console.log(currentState.substring(j-2,j+3));
+
+        
     }
 }
 
@@ -51,4 +53,4 @@ for (let i = 1; i <= numGenerations; i++) {
 
 // console.log(initialState);
 // console.log(inputArray);
-console.log(currentState);
+// console.log(currentState);
