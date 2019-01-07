@@ -30,8 +30,6 @@ let match = false;
 
 for (let i = 1; i <= numGenerations; i++) {
 
-    console.log("gen:",i);
-
     if (currentState.charAt(0) === "#") {
         currentState = "..." + currentState;
         plantZero += 3;
@@ -75,8 +73,17 @@ for (let i = 1; i <= numGenerations; i++) {
     currentState = nextState;
 }
 
+let total = 0;
+
+//calculate total score of plants
+for (let i = 0; i < currentState.length; i++) {
+    if (currentState.charAt(i) === "#") {
+        total = total + (i - plantZero);
+    }
+}
 
 
-// console.log(initialState);
-// console.log(inputArray);
+
 console.log(currentState);
+console.log(total);
+
