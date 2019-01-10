@@ -19,9 +19,9 @@ for (let i = 0; i < inputArray.length; i++) {
 
 
 
-//PROBLEM 1
+//PROBLEM 2
 
-const numGenerations = 20   //puzzle input
+const numGenerations = 200   //puzzle input
 
 let currentState = initialState;
 let nextState = currentState;
