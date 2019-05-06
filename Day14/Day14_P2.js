@@ -15,7 +15,7 @@ let twoDigs = false;
 
 //populate array
 
-for(let i = 0; i < 600000; i++) {
+for(let i = 0; i < 16000000; i++) {
 
     const sum = puzzArr[elf1] + puzzArr[elf2];
 
@@ -54,14 +54,17 @@ for(let i = 0; i < 600000; i++) {
         for(let x = puzzArr.length-7; x < puzzArr.length - 1; x++) {
             str = str + String(puzzArr[x]);
         }
-    }
+    
 
-    if(str == input) {
-        console.log("ANSWER:", puzzArr.length-7);
-        break;
-    }
+        if(str == input) {
+            console.log("ANSWER:", puzzArr.length-7);
+            break;
+        }
 
-    str = "";
+        // console.log(str);
+
+        str = "";
+    }
 
     for(let x = puzzArr.length-6; x < puzzArr.length; x++) {
         str = str + String(puzzArr[x]);
