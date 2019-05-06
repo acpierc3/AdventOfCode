@@ -1,20 +1,21 @@
 "use strict";
 
 const input = 513401;
-const test = 2018;
+const test = "01245";
 
 
 
-//PROBLEM 1
+//PROBLEM 2
 
 let puzzArr = [3,7];
 let elf1 = 0;
 let elf2 = 1;
+let twoDigs = false;
 
 
 //populate array
 
-for(let i = 0; i < input + 10; i++) {
+for(let i = 0; i < 600000; i++) {
 
     const sum = puzzArr[elf1] + puzzArr[elf2];
 
@@ -23,8 +24,12 @@ for(let i = 0; i < input + 10; i++) {
         const dig2 = parseInt((''+sum)[1]);
         // console.log(dig1, dig2);
         puzzArr.push(dig1, dig2);
+
+        twoDigs = true;
     } else {
         puzzArr.push(parseInt(sum));
+
+        twoDigs = false;
     }
     
 
@@ -43,15 +48,38 @@ for(let i = 0; i < input + 10; i++) {
     // console.log("elf1:",elf1," ", "elf2:",elf2);
     // console.log(puzzArr);
 
+    let str = "";
+
+    if (twoDigs) {
+        for(let x = puzzArr.length-7; x < puzzArr.length - 1; x++) {
+            str = str + String(puzzArr[x]);
+        }
+    }
+
+    if(str == input) {
+        console.log("ANSWER:", puzzArr.length-7);
+        break;
+    }
+
+    str = "";
+
+    for(let x = puzzArr.length-6; x < puzzArr.length; x++) {
+        str = str + String(puzzArr[x]);
+    }
+
+    if(str == input) {
+        console.log("ANSWER:", puzzArr.length-6);
+        break;
+    }
+
+    // console.log(str);
 }
 
 // console.log(puzzArr);
 
 //ANSWER
 
-for(let i = input; i < input + 10; i++) {
-    console.log(puzzArr[i]);
-}
+
 
 
 
